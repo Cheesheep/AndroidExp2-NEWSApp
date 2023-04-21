@@ -46,6 +46,8 @@ public class NewsArticleContentActivity extends AppCompatActivity {
         isArticleDisplayed = true;//从新闻列表进入文章的时候默认标志位为真
         webView = findViewById(R.id.news_webView);
         webView.getSettings().setJavaScriptEnabled(true);
+
+
         webView.setWebViewClient(new WebViewClient(){
             //重写这个方法解决重定向的问题
             @Override

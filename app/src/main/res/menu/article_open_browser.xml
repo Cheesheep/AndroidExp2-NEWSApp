@@ -3,11 +3,9 @@
     <item
         android:id="@+id/article_open_webView"
         android:title="嵌入网页"
-        android:icon="@drawable/browser"
         />
     <item
         android:id="@+id/article_open_browser"
         android:title="用浏览器打开"
-        android:icon="@drawable/browser"
         />
 </menu>
