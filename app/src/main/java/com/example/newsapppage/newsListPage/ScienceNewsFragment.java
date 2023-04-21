@@ -1,7 +1,5 @@
-package com.example.newsapppage;
+package com.example.newsapppage.newsListPage;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,53 +13,54 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.newsapppage.MainActivity;
+import com.example.newsapppage.NewsArticleContentActivity;
+import com.example.newsapppage.NewsBean;
+import com.example.newsapppage.NewsUtils;
+import com.example.newsapppage.R;
+
 import java.util.ArrayList;
 
 
-public class GlobalNewsFragment extends Fragment {
+public class ScienceNewsFragment extends Fragment {
 
     private ListView lv;
     private ArrayList<NewsBean> mList;
-    private View globalView;
+    private View ScienceView;
     private MainActivity mainActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // 获取view，并且连接到主活动上面
-        globalView = inflater.inflate(R.layout.fragment_global_news, container, false);
+        ScienceView = inflater.inflate(R.layout.fragment_science_news, container, false);
         mainActivity =(MainActivity) getActivity();
         initUI();
         initData();
         initAdapter();
-        return globalView;
+        return ScienceView;
     }
 
     private void initAdapter() {
-        lv.setAdapter(new GlobalNewsFragment.NewsAdapter());
+        lv.setAdapter(new ScienceNewsFragment.NewsAdapter());
     }
 
     private void initData() {
-        mList = NewsUtils.getAllNews(mainActivity);
+        mList = NewsUtils.getScienceList(mainActivity);
     }
 
     private void initUI() {
-        lv = (ListView) globalView.findViewById(R.id.globalList);
+        lv = (ListView) ScienceView.findViewById(R.id.scienceList);
         //设置点击事件监听
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NewsBean bean = mList.get(position);
-
-//                Intent intent = new Intent();
-//                intent.setAction(Intent.ACTION_VIEW);
-//                intent.setData(Uri.parse(mList.get(position).news_url));//跳转到网页
-//                startActivity(intent);
                 NewsArticleContentActivity.actionStart(mainActivity,bean.title,bean.news_content,bean.news_url);
             }
         });
     }
-
+    private static int countArticle = 0;
     private class NewsAdapter extends BaseAdapter {
         //适配器处理新闻列表
 
@@ -82,16 +81,19 @@ public class GlobalNewsFragment extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            GlobalNewsFragment.ViewHolder holder;
+            ScienceNewsFragment.ViewHolder holder;
             if (convertView == null) {//获取卡片的具体内容
-                holder = new GlobalNewsFragment.ViewHolder();
-                convertView = View.inflate(mainActivity.getApplicationContext(), R.layout.listview_item, null);
+                holder = new ScienceNewsFragment.ViewHolder();
+                if((countArticle++ % 3) == 0)//采用多种列表展现
+                    convertView = View.inflate(mainActivity.getApplicationContext(), R.layout.listview_item2, null);
+                else
+                    convertView = View.inflate(mainActivity.getApplicationContext(), R.layout.listview_item3, null);
                 holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
                 holder.tv_des = (TextView) convertView.findViewById(R.id.tv_des);
                 holder.iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon);
                 convertView.setTag(holder);
             } else {
-                holder = (GlobalNewsFragment.ViewHolder) convertView.getTag();
+                holder = (ScienceNewsFragment.ViewHolder) convertView.getTag();
             }
             NewsBean item = getItem(position);
             holder.tv_title.setText(item.title);
@@ -105,7 +107,6 @@ public class GlobalNewsFragment extends Fragment {
         TextView tv_title;
         TextView tv_des;
         ImageView iv_icon;
-
     }
 
 

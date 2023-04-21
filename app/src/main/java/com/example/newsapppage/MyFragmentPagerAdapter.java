@@ -3,8 +3,15 @@ package com.example.newsapppage;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.newsapppage.newsListPage.GlobalNewsFragment;
+import com.example.newsapppage.newsListPage.LifeNewsFragment;
+import com.example.newsapppage.newsListPage.ScienceNewsFragment;
+import com.example.newsapppage.newsListPage.SportNewsFragment;
+
 /**
  * Created by Carson_Ho on 16/7/22.
+ * 用于TabLayout可以点击显示不同的新闻列表页面
  */
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 

@@ -3,18 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GlobalNewsFragment">
+    tools:context=".newsListPage.GlobalNewsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/globalList"
-        >
-
-    </ListView>
-
+        />
 
 </FrameLayout>
