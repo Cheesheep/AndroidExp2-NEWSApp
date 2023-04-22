@@ -14,5 +14,4 @@
         android:title="share"
         app:showAsAction="ifRoom|withText" />
 <!--    后面有更多的item如果放不下就会进入菜单栏-->
-
 </menu>

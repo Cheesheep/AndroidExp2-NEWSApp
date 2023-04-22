@@ -22,14 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity  {
 
-    private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private MyFragmentPagerAdapter myFragmentPagerAdapter;
-
-    private Toolbar myToolbar;
     private DrawerLayout drawer_layout;
-    private NavigationView mNavigationView;//侧边菜单项
-    private MenuItem mPreMenuItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +44,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private void initTabLayoutView() {
         //将TabLayout与ViewPager绑定在一起
-        mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mTabLayout.setupWithViewPager(mViewPager);
 
         //指定Tab的位置
@@ -68,22 +63,16 @@ public class MainActivity extends AppCompatActivity  {
     private void bindViewPager() {
         //使用适配器将ViewPager与Fragment绑定在一起
         mViewPager= (ViewPager) findViewById(R.id.viewPager);
-        myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
+        MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(myFragmentPagerAdapter);
     }
 
     private void initToolBarView() {
-        myToolbar = findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         drawer_layout = findViewById(R.id.drawer_layout);
+        //将图标菜单文件添加到toolbar当中
         myToolbar.inflateMenu(R.menu.toolbar_menu);
         myToolbar.setTitle("Hello News");
-        myToolbar.setNavigationIcon(R.drawable.left_nav);
-        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawer_layout.openDrawer(GravityCompat.START);
-            }
-        });
         //ToolBar的菜单的点击事件
         myToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -96,9 +85,18 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-
-
-        mNavigationView = findViewById(R.id.nav_view);
+        //配置侧滑栏，并且监听点击事件
+        myToolbar.setNavigationIcon(R.drawable.left_nav);
+        //打开侧滑栏的监听事件
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawer_layout.openDrawer(GravityCompat.START);
+            }
+        });
+        //侧滑栏里面的菜单的监听事件
+        //侧边菜单项
+        NavigationView mNavigationView = findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             //侧滑栏中菜单的点击事件
             @Override
@@ -114,18 +112,6 @@ public class MainActivity extends AppCompatActivity  {
                 return true;
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                //打开侧边栏
-                drawer_layout.openDrawer(GravityCompat.START);
-                break;
-            default:break;
-        }
-        return true;
     }
 
 }

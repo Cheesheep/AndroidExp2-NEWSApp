@@ -14,6 +14,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+<!--    顶部菜单栏toolBar-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
