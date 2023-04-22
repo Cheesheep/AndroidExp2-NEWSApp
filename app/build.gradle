@@ -5,6 +5,9 @@ plugins {
 android {
     namespace 'com.example.newsapppage'
     compileSdk 33
+//    解决APK生成时候图片fail to compile的问题
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
 
     defaultConfig {
         applicationId "com.example.newsapppage"

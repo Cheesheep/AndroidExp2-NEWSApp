@@ -88,6 +88,7 @@ public class ScienceNewsFragment extends Fragment {
                     convertView = View.inflate(mainActivity.getApplicationContext(), R.layout.listview_item2, null);
                 else
                     convertView = View.inflate(mainActivity.getApplicationContext(), R.layout.listview_item3, null);
+                countArticle %= 12; //防止count变得过大
                 holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
                 holder.tv_des = (TextView) convertView.findViewById(R.id.tv_des);
                 holder.iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon);

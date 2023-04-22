@@ -9,5 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#FFB4B4</color>
     <color name="colorAccent">#FFB4B4</color>
-    <color name="TabBottom">#FCDDB0</color>
+    <color name="TabBackGround">#E49D9D</color>
 </resources>

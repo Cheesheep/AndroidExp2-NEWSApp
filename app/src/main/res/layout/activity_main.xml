@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        app:titleTextColor="@color/white"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
@@ -27,15 +28,16 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#ffff00"
+        android:layout_height="80dp"
         app:tabIndicatorColor="#ffffff"
-        app:tabIndicatorHeight="10dp"
+        app:tabIndicatorHeight="5dp"
         app:tabTextColor="@color/white"
-        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabIconTint="@color/white"
+        app:tabSelectedTextColor="@color/white"
         app:tabMode="fixed"
         app:tabBackground="@drawable/selected"
-        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"/>
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+        />
 <!--用于实现左右滑动效果-->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
