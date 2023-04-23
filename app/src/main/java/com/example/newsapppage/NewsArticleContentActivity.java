@@ -46,8 +46,7 @@ public class NewsArticleContentActivity extends AppCompatActivity {
         isArticleDisplayed = true;//从新闻列表进入文章的时候默认标志位为真
         webView = findViewById(R.id.news_webView);
         webView.getSettings().setJavaScriptEnabled(true);
-
-
+        //返回false可以解决重定向问题
         webView.setWebViewClient(new WebViewClient(){
             //重写这个方法解决重定向的问题
             @Override
@@ -57,8 +56,8 @@ public class NewsArticleContentActivity extends AppCompatActivity {
         });
         webView.loadUrl(articleUrl);
     }
-    //重写顶部菜单栏构造方法
 
+    //重写顶部菜单栏构造方法
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

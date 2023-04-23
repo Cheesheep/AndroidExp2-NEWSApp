@@ -14,7 +14,6 @@ import com.example.newsapppage.newsListPage.SportNewsFragment;
  * 用于TabLayout可以点击显示不同的新闻列表页面
  */
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-
     private String[] mTitles = new String[]{"国际", "体育", "生活","科学"};
 
     public MyFragmentPagerAdapter(FragmentManager fm) {
@@ -23,6 +22,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        //选择不同的菜单返回不同的Fragment页面
         if (position == 1) {
             return new SportNewsFragment();
         } else if (position == 2) {

@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 
 public class GlobalNewsFragment extends Fragment {
-
     private ListView lv;
     private ArrayList<NewsBean> mList;
     private View globalView;
@@ -56,11 +55,7 @@ public class GlobalNewsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NewsBean bean = mList.get(position);
-
-//                Intent intent = new Intent();
-//                intent.setAction(Intent.ACTION_VIEW);
-//                intent.setData(Uri.parse(mList.get(position).news_url));//跳转到网页
-//                startActivity(intent);
+                //跳转到显示文章内容的活动
                 NewsArticleContentActivity.actionStart(mainActivity,bean.title,bean.news_content,bean.news_url);
             }
         });
@@ -68,22 +63,18 @@ public class GlobalNewsFragment extends Fragment {
 
     private class NewsAdapter extends BaseAdapter {
         //适配器处理新闻列表
-
         @Override
         public int getCount() {
             return mList.size();
         }
-
         @Override
         public NewsBean getItem(int position) {
             return mList.get(position);
         }
-
         @Override
         public long getItemId(int position) {
             return position;
         }
-
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             GlobalNewsFragment.ViewHolder holder;
@@ -104,12 +95,10 @@ public class GlobalNewsFragment extends Fragment {
             return convertView;
         }
     }
-
     private static class ViewHolder {
         TextView tv_title;
         TextView tv_des;
         ImageView iv_icon;
-
     }
 
 

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity  {
         //设置首页工具栏内容以及样式
         initToolBarView();
         //将页面绑定viewPager，进行设置
-        bindViewPager();
+        initViewPager();
         //初始化layout的设置，例如图标，定位
         initTabLayoutView();
     }
@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity  {
         four.setIcon(R.drawable.science);
     }
 
-    private void bindViewPager() {
-        //使用适配器将ViewPager与Fragment绑定在一起
+    private void initViewPager() {
+        //初始化适配器的内容
         mViewPager= (ViewPager) findViewById(R.id.viewPager);
         MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(myFragmentPagerAdapter);
@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
         //侧滑栏里面的菜单的监听事件
-        //侧边菜单项
         NavigationView mNavigationView = findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             //侧滑栏中菜单的点击事件

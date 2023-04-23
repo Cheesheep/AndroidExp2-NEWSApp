@@ -9,7 +9,6 @@ public class NewsUtils {
      * @param context 上下文环境
      * @return 新闻集合
      */
-
     public static ArrayList<NewsBean> getGlobalNews(Context context) {
         ArrayList<NewsBean> arrayList = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
